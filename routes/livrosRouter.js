@@ -1,22 +1,16 @@
-import { getLivro } from '../controller/livroController.js';
+import { getLivros, getLivro, postLivro, patchLivro} from '../controller/livroController.js';
 import {Router} from 'express'
+import { insereLivro } from '../service/livroService.js';
 
 const router = Router();
 
-// GET - Retornar livros
-router.get('/', getLivro);
+router.get('/', getLivros)
 
+router.get('/:id', getLivro)
 
-// POST - Criar um livro
-router.post('/', (req, res) => {
-    res.send('Estou na rota Post')
-});
+router.post('/', postLivro)
 
-
-// PACTH - Atualizar um livro
-router.patch('/', (req, res) => {
-    res.send('Estou na rota Patch')
-});
+router.patch('/:id', patchLivro)
 
 
 // DELETE - Apagar um livro
